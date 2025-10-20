@@ -616,7 +616,17 @@ void MainWindow::showScreenshotWithMarks(const QImage &shot, const QPoint &tmplP
     }
     p.end();
 
-    ui->lblScreenshot->setPixmap(QPixmap::fromImage(canvas));
+    // 固定展示宽度最大300，等比例缩放
+    int targetW = 300;
+    int w = canvas.width();
+    int h = canvas.height();
+    if (w > targetW) {
+        int targetH = (int)((double)targetW / w * h);
+        QImage scaled = canvas.scaled(targetW, targetH, Qt::KeepAspectRatio, Qt::SmoothTransformation);
+        ui->lblScreenshot->setPixmap(QPixmap::fromImage(scaled));
+    } else {
+        ui->lblScreenshot->setPixmap(QPixmap::fromImage(canvas));
+    }
     appendLog("已在UI展示截图与标记");
 }
 
