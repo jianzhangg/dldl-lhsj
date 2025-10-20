@@ -1,0 +1,112 @@
+# ==========================
+# Git ignore for C++ Qt 6 + CMake + MSVC + vcpkg (Windows)
+# ==========================
+
+# --- Project build outputs (out-of-source recommended) ---
+build/
+cmake-build-*/
+out/
+bin/
+lib/
+
+# --- CMake (including in-source builds) ---
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+CTestTestfile.cmake
+Makefile
+compile_commands.json
+
+# --- Ninja ---
+build.ninja
+.ninja_log
+.ninja_deps
+
+# --- Qt (moc/uic/rcc autogen) ---
+*_autogen/
+mocs_compilation.cpp
+ui_*.h
+moc_*.cpp
+qrc_*.cpp
+*.qm
+
+# --- Visual Studio / MSVC ---
+.vs/
+*.sln
+*.vcxproj*
+*.vcproj*
+*.filters
+*.opensdf
+*.sdf
+*.suo
+*.user
+*.userosscache
+*.VC.db
+*.VC.opendb
+ipch/
+Debug/
+Release/
+x64/
+x86/
+
+# --- Compiled objects & libraries ---
+*.obj
+*.o
+*.lo
+*.la
+*.a
+*.lib
+*.dll
+*.so
+*.dylib
+*.exp
+*.pdb
+*.idb
+*.ilk
+*.res
+*.rsp
+*.tlh
+*.tli
+*.iobj
+*.ipdb
+*.tlog
+*.pch
+*.manifest
+
+# --- vcpkg (keep vcpkg.json & vcpkg-configuration.json) ---
+**/vcpkg_installed/
+**/vcpkg-dependencies/
+vcpkg-manifest-install.log
+
+# --- Qt Creator / IDE configs ---
+*.pro.user*
+*.pri.user*
+*.qbs.user*
+CMakeLists.txt.user*
+*.creator.user*
+*.qtc
+.qtc/
+.vscode/
+.idea/
+*.code-workspace
+
+# --- CTest outputs ---
+Testing/
+
+# --- Logs ---
+*.log
+
+# --- OS files ---
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# --- Temp & cache ---
+*.tmp
+*.temp
+*.cache
+
+# --- Optional: user CMake presets (keep shared CMakePresets.json) ---
+CMakeUserPresets.json
+
+
