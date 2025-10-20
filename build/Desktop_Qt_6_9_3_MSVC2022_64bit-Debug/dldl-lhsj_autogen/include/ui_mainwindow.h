@@ -35,6 +35,7 @@ public:
     QHBoxLayout *resultLayout;
     QLabel *lblMatchResult;
     QLabel *lblOcrResult;
+    QLabel *lblScreenshot;
     QTextEdit *txtLog;
     QMenuBar *menubar;
     QStatusBar *statusbar;
@@ -84,6 +85,15 @@ public:
 
         verticalLayout->addLayout(resultLayout);
 
+        lblScreenshot = new QLabel(centralwidget);
+        lblScreenshot->setObjectName("lblScreenshot");
+        lblScreenshot->setMinimumSize(QSize(360, 140));
+        lblScreenshot->setMaximumSize(QSize(16777215, 300));
+        lblScreenshot->setFrameShape(QFrame::StyledPanel);
+        lblScreenshot->setScaledContents(true);
+
+        verticalLayout->addWidget(lblScreenshot);
+
         txtLog = new QTextEdit(centralwidget);
         txtLog->setObjectName("txtLog");
         txtLog->setReadOnly(true);
@@ -112,6 +122,7 @@ public:
         btnRunHshj->setText(QCoreApplication::translate("MainWindow", "\351\255\202\345\205\275\345\271\273\345\242\203\345\211\257\346\234\254", nullptr));
         lblMatchResult->setText(QCoreApplication::translate("MainWindow", "\346\250\241\346\235\277\345\214\271\351\205\215\345\235\220\346\240\207: -", nullptr));
         lblOcrResult->setText(QCoreApplication::translate("MainWindow", "OCR\345\235\220\346\240\207: -", nullptr));
+        lblScreenshot->setText(QString());
     } // retranslateUi
 
 };

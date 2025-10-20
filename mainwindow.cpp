@@ -7,8 +7,16 @@
 #include <QGuiApplication>
 #include <QCursor>
 #include <QTimer>
+#include <QPainter>
+#include <QPen>
+#include <QDir>
+#include <QFileInfo>
+#include <QProcessEnvironment>
 #include <QCoreApplication>
 #include <QVector>
+#include <QThread>
+#include <QMetaObject>
+#include <QStandardPaths>
 #include <vector>
 
 #include <opencv2/imgproc.hpp>
@@ -44,8 +52,29 @@ MainWindow::~MainWindow()
 void MainWindow::appendLog(const QString &msg)
 {
     QString line = QDateTime::currentDateTime().toString("yyyy-MM-dd HH:mm:ss.zzz ") + msg;
-    ui->txtLog->append(line);
-    qDebug() << line;
+    if (QThread::currentThread() == this->thread()) {
+        ui->txtLog->append(line);
+    } else {
+        QString copy = line;
+        QMetaObject::invokeMethod(this, [this, copy]() { ui->txtLog->append(copy); }, Qt::QueuedConnection);
+    }
+    // 向 Qt Creator Application Output 以 UTF-8 编码输出
+    // 需与 IDE 中 Environment->Interface->Text codec for tools = UTF-8 保持一致
+    QTextStream ts(stdout);
+#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
+    ts.setEncoding(QStringConverter::Utf8);
+#else
+    ts.setCodec("UTF-8");
+#endif
+    ts << line << '\n';
+    ts.flush();
+
+#ifdef _WIN32
+    // 同时写入调试器，便于在 DebugView 等工具查看
+    std::wstring ws = line.toStdWString();
+    ws.push_back(L'\n');
+    OutputDebugStringW(ws.c_str());
+#endif
 }
 
 void MainWindow::onSelectWindowClicked()
@@ -76,22 +105,38 @@ void MainWindow::onRunHshjClicked()
         return;
     }
     appendLog(QString("截图完成，尺寸 %1x%2").arg(shot.width()).arg(shot.height()));
+    lastScreenshot = shot;
 
-    double tmplScore = 0.0;
-    QPoint matchPt = runTemplateMatch(shot, tmplScore);
-    appendLog(QString("模板匹配坐标: (%1,%2) 评分:%3").arg(matchPt.x()).arg(matchPt.y()).arg(tmplScore, 0, 'f', 4));
-    ui->lblMatchResult->setText(QString("模板匹配坐标: (%1,%2) 评分:%3").arg(matchPt.x()).arg(matchPt.y()).arg(tmplScore, 0, 'f', 4));
+    // 模板匹配改为异步，防止鼠标转圈
+    appendLog("启动异步模板匹配");
+    QImage shotCopyForTmpl = shot.copy();
+    auto tmplTask = [this](QImage img) -> TemplateResult {
+        double score = 0.0;
+        QPoint pt = runTemplateMatch(img, score);
+        return TemplateResult{pt, score};
+    };
+    futureTmpl = QtConcurrent::run(tmplTask, shotCopyForTmpl);
+    connect(&watcherTmpl, &QFutureWatcher<TemplateResult>::finished, this, &MainWindow::onTemplateFinished, Qt::UniqueConnection);
+    watcherTmpl.setFuture(futureTmpl);
 
-    QString ocrText;
-    QRect ocrRect = runOcrFind(shot, &ocrText);
-    if (ocrRect.isValid()) {
-        appendLog(QString("OCR坐标: x=%1 y=%2 w=%3 h=%4 文字=%5")
-                  .arg(ocrRect.x()).arg(ocrRect.y()).arg(ocrRect.width()).arg(ocrRect.height()).arg(ocrText));
-        ui->lblOcrResult->setText(QString("OCR坐标: (%1,%2,%3,%4) 文字:%5").arg(ocrRect.x()).arg(ocrRect.y()).arg(ocrRect.width()).arg(ocrRect.height()).arg(ocrText));
-    } else {
-        appendLog("OCR未找到‘魂兽幻境’");
-        ui->lblOcrResult->setText("OCR坐标: 未找到");
-    }
+    // 异步执行双语言 OCR，避免卡 UI
+    appendLog("启动异步OCR任务[fast] 与 [accuracy]");
+    QImage shotCopy = shot.copy();
+    auto ocrTask = [this](QImage img, QString lang) -> OcrResult {
+        QString text;
+        QRect rect = runOcrFindWithLang(img, lang, &text);
+        OcrResult r{rect, text, lang};
+        return r;
+    };
+    futureFast = QtConcurrent::run(ocrTask, shotCopy, QStringLiteral("chi_sim_fast"));
+    futureAcc  = QtConcurrent::run(ocrTask, shotCopy, QStringLiteral("chi_sim_accuracy"));
+    connect(&watcherFast, &QFutureWatcher<OcrResult>::finished, this, &MainWindow::onOcrFinished, Qt::UniqueConnection);
+    connect(&watcherAcc,  &QFutureWatcher<OcrResult>::finished, this, &MainWindow::onOcrFinished, Qt::UniqueConnection);
+    watcherFast.setFuture(futureFast);
+    watcherAcc.setFuture(futureAcc);
+
+    // 截图与模板匹配结果先展示，OCR结果回调里再补充
+    showScreenshotWithMarks(shot, QPoint(-1,-1), QRect(), QRect());
 #else
     appendLog("当前平台未实现");
 #endif
@@ -204,9 +249,12 @@ QImage MainWindow::loadTemplateImage()
 {
     // 优先从资源加载，其次从可执行目录的 assets
     QImage res(":/assets/hshj.png");
-    if (!res.isNull()) return res;
-    QString path = QCoreApplication::applicationDirPath() + "/assets/hshj.png";
-    return QImage(path);
+    if (res.isNull()) {
+        QString path = QCoreApplication::applicationDirPath() + "/assets/hshj.png";
+        res.load(path);
+    }
+    if (res.isNull()) appendLog("模板图片仍未找到: :/assets/hshj.png 或 程序目录/assets/hshj.png");
+    return res;
 }
 
 QPoint MainWindow::runTemplateMatch(const QImage &screenshot, double &scoreOut)
@@ -222,48 +270,78 @@ QPoint MainWindow::runTemplateMatch(const QImage &screenshot, double &scoreOut)
     cv::Mat srcRGBA = qimageToMat(screenshot);
     cv::Mat templRGBA = qimageToMat(tmplImg);
 
-    // 分离 alpha 作为掩膜（透明度匹配），并转为二值掩膜
-    cv::Mat alpha, mask;
+    // 分离 alpha 作为掩膜
+    cv::Mat alpha;
     if (templRGBA.channels() == 4) {
-        std::vector<cv::Mat> ch;
-        cv::split(templRGBA, ch);
-        alpha = ch[3];
-        cv::threshold(alpha, mask, 10, 255, cv::THRESH_BINARY);
+        std::vector<cv::Mat> ch; cv::split(templRGBA, ch); alpha = ch[3];
     }
 
-    // 统一转为 BGR 三通道参与匹配
-    cv::Mat src3, templ3;
-    cv::cvtColor(srcRGBA, src3, cv::COLOR_RGBA2BGR);
-    cv::cvtColor(templRGBA, templ3, cv::COLOR_RGBA2BGR);
+    cv::Mat src3; cv::cvtColor(srcRGBA, src3, cv::COLOR_RGBA2BGR);
 
-    int resultCols = src3.cols - templ3.cols + 1;
-    int resultRows = src3.rows - templ3.rows + 1;
-    if (resultCols <= 0 || resultRows <= 0) {
-        scoreOut = 0.0;
-        return QPoint(-1, -1);
+    // 多尺度匹配：从1.0降到0.4
+    double bestScore = -1.0; cv::Point bestLoc(0,0); double bestScale = 1.0; cv::Size bestSize;
+    for (double scale = 1.0; scale >= 0.4; scale -= 0.1) {
+        cv::Mat templScaledRGBA, templ3, mask;
+        cv::resize(templRGBA, templScaledRGBA, cv::Size(), scale, scale, cv::INTER_AREA);
+        if (templScaledRGBA.cols <= 1 || templScaledRGBA.rows <= 1) continue;
+        cv::cvtColor(templScaledRGBA, templ3, cv::COLOR_RGBA2BGR);
+        if (!alpha.empty()) {
+            cv::Mat alphaScaled; cv::resize(alpha, alphaScaled, cv::Size(), scale, scale, cv::INTER_AREA);
+            cv::threshold(alphaScaled, mask, 10, 255, cv::THRESH_BINARY);
+        }
+
+        int cols = src3.cols - templ3.cols + 1;
+        int rows = src3.rows - templ3.rows + 1;
+        if (cols <= 0 || rows <= 0) {
+            appendLog(QString("跳过尺度%1：模板大于截图 (%2x%3)>").arg(scale,0,'f',1).arg(templ3.cols).arg(templ3.rows));
+            continue;
+        }
+        cv::Mat result(rows, cols, CV_32FC1);
+        if (!mask.empty()) cv::matchTemplate(src3, templ3, result, cv::TM_CCORR_NORMED, mask);
+        else cv::matchTemplate(src3, templ3, result, cv::TM_CCOEFF_NORMED);
+        double minVal, maxVal; cv::Point minLoc, maxLoc; cv::minMaxLoc(result, &minVal, &maxVal, &minLoc, &maxLoc);
+        appendLog(QString("尺度%1 匹配得分=%2 位置=(%3,%4) 模板(%5x%6)")
+                  .arg(scale,0,'f',1).arg(maxVal,0,'f',4).arg(maxLoc.x).arg(maxLoc.y).arg(templ3.cols).arg(templ3.rows));
+        if (maxVal > bestScore) { bestScore = maxVal; bestLoc = maxLoc; bestScale = scale; bestSize = templ3.size(); }
     }
-    cv::Mat result(resultRows, resultCols, CV_32FC1);
 
-    if (!mask.empty()) {
-        cv::matchTemplate(src3, templ3, result, cv::TM_CCORR_NORMED, mask);
-    } else {
-        cv::matchTemplate(src3, templ3, result, cv::TM_CCOEFF_NORMED);
-    }
-
-    double minVal, maxVal; cv::Point minLoc, maxLoc;
-    cv::minMaxLoc(result, &minVal, &maxVal, &minLoc, &maxLoc);
-    scoreOut = maxVal;
-    appendLog(QString("模板匹配得分 max=%1").arg(maxVal, 0, 'f', 4));
-    return QPoint(maxLoc.x, maxLoc.y);
+    scoreOut = (bestScore < 0 ? 0.0 : bestScore);
+    appendLog(QString("模板匹配最佳：score=%1 scale=%2 size=%3x%4")
+              .arg(scoreOut,0,'f',4).arg(bestScale,0,'f',2).arg(bestSize.width).arg(bestSize.height));
+    if (bestScore < 0) return QPoint(-1,-1);
+    return QPoint(bestLoc.x, bestLoc.y);
 }
 
 QRect MainWindow::runOcrFind(const QImage &screenshot, QString *recognizedOut)
 {
+    auto testTessdata = [&](const QString &dir) -> bool {
+        return QFileInfo(QDir(dir).filePath("chi_sim.traineddata")).exists();
+    };
+    QString appDir = QCoreApplication::applicationDirPath();
+    QStringList candidates;
+    candidates << qEnvironmentVariable("TESSDATA_PREFIX");
+    candidates << QDir(appDir).filePath("tessdata");
+    candidates << QDir(appDir).filePath("share/tessdata");
+    candidates << QDir(appDir).filePath("share/tesseract/tessdata");
+    // vcpkg 默认安装位置（构建目录旁）
+    candidates << QDir(QCoreApplication::applicationDirPath()).filePath("../default/vcpkg_installed/x64-windows/share/tesseract/tessdata");
+    // 常见系统环境变量
+    candidates << QDir(qEnvironmentVariable("VCPKG_ROOT")).filePath("installed/x64-windows/share/tesseract/tessdata");
+    QString chosen;
+    for (const QString &c : candidates) { if (!c.isEmpty() && testTessdata(c)) { chosen = c; break; } }
+    if (!chosen.isEmpty()) {
+        appendLog(QString("检测到tessdata目录: %1").arg(chosen));
+        qputenv("TESSDATA_PREFIX", chosen.toUtf8());
+    } else {
+        appendLog("未检测到chi_sim.traineddata，请确认放置在程序目录tessdata/或设置TESSDATA_PREFIX");
+    }
+
     tesseract::TessBaseAPI api;
-    // 使用中文简体，若未安装会回落英文
-    if (api.Init(nullptr, "chi_sim")) {
-        appendLog("Tesseract初始化失败，尝试英文");
-        if (api.Init(nullptr, "eng")) {
+    // 明确指定路径，优先中文
+    const char *datapath = chosen.isEmpty() ? nullptr : chosen.toUtf8().constData();
+    if (api.Init(datapath, "chi_sim")) {
+        appendLog("Tesseract初始化失败(chi_sim)，尝试英文");
+        if (api.Init(datapath, "eng")) {
             appendLog("Tesseract英文也失败");
             return QRect();
         }
@@ -350,4 +428,258 @@ QRect MainWindow::runOcrFind(const QImage &screenshot, QString *recognizedOut)
     api.End();
     pixDestroy(&pix);
     return found;
+}
+
+QRect MainWindow::runOcrFindWithLang(const QImage &screenshot, const QString &langCode, QString *recognizedOut)
+{
+    appendLog(QString("[OCR] 进入 runOcrFindWithLang, lang=%1").arg(langCode));
+
+    auto testTessdataForLang = [&](const QString &dir, const QString &lang) -> QString {
+        if (dir.isEmpty()) return QString();
+        // 优先匹配同名变体文件
+        QString variantFile = QDir(dir).filePath(lang + ".traineddata");
+        if (QFileInfo(variantFile).exists()) return variantFile;
+        // 兼容标准文件名
+        if (lang.startsWith("chi_sim")) {
+            QString stdFile = QDir(dir).filePath("chi_sim.traineddata");
+            if (QFileInfo(stdFile).exists()) return stdFile;
+        }
+        return QString();
+    };
+
+    QString appDir = QCoreApplication::applicationDirPath();
+    QStringList candidates;
+    candidates << qEnvironmentVariable("TESSDATA_PREFIX");
+    candidates << QDir(appDir).filePath("tessdata");
+    candidates << QDir(appDir).filePath("../tessdata");
+    candidates << QDir(appDir).filePath("../../tessdata");
+    candidates << QDir(appDir).filePath("share/tessdata");
+    candidates << QDir(appDir).filePath("share/tesseract/tessdata");
+    // vcpkg 默认安装位置（构建目录旁）
+    candidates << QDir(QCoreApplication::applicationDirPath()).filePath("../default/vcpkg_installed/x64-windows/share/tesseract/tessdata");
+    // 常见系统环境变量
+    candidates << QDir(qEnvironmentVariable("VCPKG_ROOT")).filePath("installed/x64-windows/share/tesseract/tessdata");
+    QString foundFile;
+    QString chosen;
+    for (const QString &c : candidates) {
+        QString f = testTessdataForLang(c, langCode);
+        appendLog(QString("[OCR] 探测目录: %1 => %2").arg(c, f.isEmpty()?"未找到":f));
+        if (!f.isEmpty()) { chosen = c; foundFile = f; break; }
+    }
+    if (chosen.isEmpty()) {
+        appendLog(QString("未检测到%1(.traineddata)，请将其放在程序目录tessdata/或设置TESSDATA_PREFIX").arg(langCode));
+        return QRect();
+    }
+
+    // 构造 datapath 与 lang 参数
+    QString datapath = chosen;
+    QString langParam = QStringLiteral("chi_sim");
+    bool needAlias = false;
+    if (QFileInfo(foundFile).fileName() == QStringLiteral("chi_sim.traineddata")) {
+        // 使用标准命名
+        needAlias = false;
+    } else {
+        needAlias = true;
+    }
+
+    if (needAlias) {
+        // 将变体文件复制到临时别名目录，命名为 chi_sim.traineddata
+        QString base = QStandardPaths::writableLocation(QStandardPaths::TempLocation);
+        QString sub = langCode.contains("accuracy") ? "dldl-lhsj-tess-acc" : "dldl-lhsj-tess-fast";
+        QString aliasDir = QDir(base).filePath(sub);
+        QDir().mkpath(aliasDir);
+        QString aliasFile = QDir(aliasDir).filePath("chi_sim.traineddata");
+        bool needCopy = true;
+        if (QFileInfo::exists(aliasFile)) {
+            if (QFileInfo(aliasFile).size() == QFileInfo(foundFile).size()) needCopy = false;
+            else QFile::remove(aliasFile);
+        }
+        if (needCopy) {
+            appendLog(QString("[OCR] 拷贝模型到别名目录: %1 -> %2").arg(foundFile, aliasFile));
+            if (!QFile::copy(foundFile, aliasFile)) {
+                appendLog("[OCR] 拷贝失败，无法创建别名文件 chi_sim.traineddata");
+                return QRect();
+            }
+        }
+        datapath = aliasDir;
+    }
+    appendLog(QString("[OCR] 使用datapath=%1, lang=%2, 源文件=%3").arg(datapath, langParam, foundFile));
+    qputenv("TESSDATA_PREFIX", datapath.toUtf8());
+
+    tesseract::TessBaseAPI api;
+    const QByteArray dpUtf8 = datapath.toUtf8();
+    if (api.Init(dpUtf8.constData(), langParam.toUtf8().constData())) {
+        appendLog(QString("Tesseract初始化失败(%1)" ).arg(langCode));
+        return QRect();
+    }
+    api.SetPageSegMode(tesseract::PSM_AUTO);
+    api.SetVariable("user_defined_dpi", "96");
+
+    QImage gray = screenshot.convertToFormat(QImage::Format_Grayscale8);
+    Pix *pix = pixCreate(gray.width(), gray.height(), 8);
+    for (int y = 0; y < gray.height(); ++y) {
+        const uchar *line = gray.constScanLine(y);
+        for (int x = 0; x < gray.width(); ++x) {
+            pixSetPixel(pix, x, y, line[x]);
+        }
+    }
+    api.SetImage(pix);
+    char *outText = api.GetUTF8Text();
+    QString text = QString::fromUtf8(outText ? outText : "").simplified();
+    if (recognizedOut) *recognizedOut = text;
+    appendLog(QString("[%1] OCR全文:%2").arg(langCode, text.left(80)));
+
+    api.Recognize(0);
+    QRect found;
+    // 第一轮：词级
+    {
+        tesseract::ResultIterator *ri = api.GetIterator();
+        tesseract::PageIteratorLevel level = tesseract::RIL_WORD;
+        if (ri) {
+            do {
+                const char *word = ri->GetUTF8Text(level);
+                float conf = ri->Confidence(level);
+                int x1, y1, x2, y2;
+                ri->BoundingBox(level, &x1, &y1, &x2, &y2);
+                QString w = QString::fromUtf8(word ? word : "");
+                if (word) delete [] word;
+                if (w.contains("魂兽幻境")) {
+                    found = QRect(QPoint(x1, y1), QPoint(x2, y2));
+                    break;
+                }
+                if (w.contains("魂") || w.contains("兽") || w.contains("幻") || w.contains("境")) {
+                    appendLog(QString("[%1] 词:'%2' conf=%3 box=(%4,%5,%6,%7)")
+                              .arg(langCode).arg(w).arg(conf, 0, 'f', 1).arg(x1).arg(y1).arg(x2).arg(y2));
+                }
+            } while (ri->Next(level));
+        }
+    }
+    // 第二轮：字级连续匹配
+    if (!found.isValid()) {
+        tesseract::ResultIterator *ri2 = api.GetIterator();
+        tesseract::PageIteratorLevel level2 = tesseract::RIL_SYMBOL;
+        int stage = 0; // 0->魂,1->兽,2->幻,3->境
+        QRect accum;
+        if (ri2) {
+            do {
+                const char *sym = ri2->GetUTF8Text(level2);
+                float conf = ri2->Confidence(level2);
+                int x1, y1, x2, y2;
+                ri2->BoundingBox(level2, &x1, &y1, &x2, &y2);
+                QString s = QString::fromUtf8(sym ? sym : "").trimmed();
+                if (sym) delete [] sym;
+                if (s.isEmpty()) continue;
+                const QChar target[4] = { QChar(u'魂'), QChar(u'兽'), QChar(u'幻'), QChar(u'境') };
+                if (s.contains(target[stage])) {
+                    QRect r(QPoint(x1, y1), QPoint(x2, y2));
+                    accum = stage == 0 ? r : accum.united(r);
+                    stage++;
+                    if (stage == 4) { found = accum; break; }
+                } else {
+                    if (s.contains(QChar(u'魂'))) { stage = 1; accum = QRect(QPoint(x1, y1), QPoint(x2, y2)); }
+                    else { stage = 0; accum = QRect(); }
+                }
+                if (s.contains("魂") || s.contains("兽") || s.contains("幻") || s.contains("境")) {
+                    appendLog(QString("[%1] 字:'%2' conf=%3 box=(%4,%5,%6,%7) stage=%8")
+                              .arg(langCode).arg(s).arg(conf, 0, 'f', 1).arg(x1).arg(y1).arg(x2).arg(y2).arg(stage));
+                }
+            } while (ri2->Next(level2));
+        }
+    }
+
+    if (outText) delete [] outText;
+    api.End();
+    pixDestroy(&pix);
+    return found;
+}
+
+void MainWindow::showScreenshotWithMarks(const QImage &shot, const QPoint &tmplPt, const QRect &ocrRectFast, const QRect &ocrRectAcc)
+{
+    QImage canvas = shot.convertToFormat(QImage::Format_RGBA8888);
+    QPainter p(&canvas);
+    p.setRenderHint(QPainter::Antialiasing);
+
+    // 绘制模板匹配点
+    if (tmplPt.x() >= 0 && tmplPt.y() >= 0) {
+        p.setPen(QPen(Qt::green, 3));
+        p.drawEllipse(QPoint(tmplPt.x(), tmplPt.y()), 10, 10);
+    }
+
+    // 绘制OCR矩形（fast 红色, accuracy 蓝色）
+    if (ocrRectFast.isValid()) {
+        p.setPen(QPen(Qt::red, 3));
+        p.drawRect(ocrRectFast);
+    }
+    if (ocrRectAcc.isValid()) {
+        p.setPen(QPen(Qt::blue, 3));
+        p.drawRect(ocrRectAcc);
+    }
+    p.end();
+
+    ui->lblScreenshot->setPixmap(QPixmap::fromImage(canvas));
+    appendLog("已在UI展示截图与标记");
+}
+
+void MainWindow::onOcrFinished()
+{
+    // 当任一 OCR 完成时，汇总两个任务的结果并刷新 UI
+    bool fastReady = watcherFast.isFinished();
+    bool accReady  = watcherAcc.isFinished();
+    if (!fastReady && !accReady) return;
+
+    QString label;
+    QRect rectFast, rectAcc;
+    QString textFast, textAcc;
+
+    if (fastReady) {
+        OcrResult r = futureFast.result();
+        rectFast = r.rect; textFast = r.text;
+        if (r.rect.isValid()) appendLog(QString("[fast] OCR坐标: (%1,%2,%3,%4) 文本:%5")
+            .arg(r.rect.x()).arg(r.rect.y()).arg(r.rect.width()).arg(r.rect.height()).arg(r.text));
+        else appendLog("[fast] OCR未找到‘魂兽幻境’");
+    }
+    if (accReady) {
+        OcrResult r = futureAcc.result();
+        rectAcc = r.rect; textAcc = r.text;
+        if (r.rect.isValid()) appendLog(QString("[accuracy] OCR坐标: (%1,%2,%3,%4) 文本:%5")
+            .arg(r.rect.x()).arg(r.rect.y()).arg(r.rect.width()).arg(r.rect.height()).arg(r.text));
+        else appendLog("[accuracy] OCR未找到‘魂兽幻境’");
+    }
+
+    label += rectFast.isValid() ? QString("[fast] (%1,%2,%3,%4) 文本:%5\n").arg(rectFast.x()).arg(rectFast.y()).arg(rectFast.width()).arg(rectFast.height()).arg(textFast)
+                                : QString("[fast] 未找到\n");
+    label += rectAcc.isValid()  ? QString("[accuracy] (%1,%2,%3,%4) 文本:%5").arg(rectAcc.x()).arg(rectAcc.y()).arg(rectAcc.width()).arg(rectAcc.height()).arg(textAcc)
+                                : QString("[accuracy] 未找到");
+    if (QThread::currentThread() == this->thread()) {
+        ui->lblOcrResult->setText(label);
+    } else {
+        QString copy = label;
+        QMetaObject::invokeMethod(this, [this, copy]() { ui->lblOcrResult->setText(copy); }, Qt::QueuedConnection);
+    }
+
+    // 使用缓存的截图重绘 OCR 标注，并缓存 OCR 框供模板回调使用
+    if (!lastScreenshot.isNull()) {
+        lastRectFast = rectFast;
+        lastRectAcc  = rectAcc;
+        showScreenshotWithMarks(lastScreenshot, lastTemplatePt, rectFast, rectAcc);
+    }
+}
+
+void MainWindow::onTemplateFinished()
+{
+    TemplateResult r = futureTmpl.result();
+    lastTemplatePt = r.pt;
+    lastTemplateScore = r.score;
+    appendLog(QString("模板匹配坐标: (%1,%2) 评分:%3")
+              .arg(r.pt.x()).arg(r.pt.y()).arg(r.score, 0, 'f', 4));
+    QString label = QString("模板匹配坐标: (%1,%2) 评分:%3").arg(r.pt.x()).arg(r.pt.y()).arg(r.score, 0, 'f', 4);
+    if (QThread::currentThread() == this->thread()) {
+        ui->lblMatchResult->setText(label);
+    } else {
+        QString copy = label;
+        QMetaObject::invokeMethod(this, [this, copy]() { ui->lblMatchResult->setText(copy); }, Qt::QueuedConnection);
+    }
+    if (!lastScreenshot.isNull()) {
+        showScreenshotWithMarks(lastScreenshot, lastTemplatePt, lastRectFast, lastRectAcc);
+    }
 }

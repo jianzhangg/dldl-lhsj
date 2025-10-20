@@ -1,6 +1,6 @@
 <RCC>
  <qresource prefix="/assets">
-  <file>assets/hshj.png</file>
+  <file alias="hshj.png">assets/hshj.png</file>
  </qresource>
 </RCC>
 
