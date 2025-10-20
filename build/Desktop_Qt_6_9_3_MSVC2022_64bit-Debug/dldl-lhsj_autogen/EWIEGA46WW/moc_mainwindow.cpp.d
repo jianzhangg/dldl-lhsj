@@ -55,6 +55,10 @@ C:/code/dldl-lhsj/build/Desktop_Qt_6_9_3_MSVC2022_64bit-Debug/dldl-lhsj_autogen/
   C:/Program\ Files/Microsoft\ Visual\ Studio/2022/Community/VC/Tools/MSVC/14.44.35207/include/version \
   C:/Program\ Files/Microsoft\ Visual\ Studio/2022/Community/VC/Tools/MSVC/14.44.35207/include/yvals.h \
   C:/Program\ Files/Microsoft\ Visual\ Studio/2022/Community/VC/Tools/MSVC/14.44.35207/include/yvals_core.h \
+  D:/Qt/6.9.3/msvc2022_64/include/QtCore/QDateTime \
+  D:/Qt/6.9.3/msvc2022_64/include/QtCore/QDebug \
+  D:/Qt/6.9.3/msvc2022_64/include/QtCore/QPoint \
+  D:/Qt/6.9.3/msvc2022_64/include/QtCore/QRect \
   D:/Qt/6.9.3/msvc2022_64/include/QtCore/q17memory.h \
   D:/Qt/6.9.3/msvc2022_64/include/QtCore/q20functional.h \
   D:/Qt/6.9.3/msvc2022_64/include/QtCore/q20iterator.h \
@@ -76,6 +80,7 @@ C:/code/dldl-lhsj/build/Desktop_Qt_6_9_3_MSVC2022_64bit-Debug/dldl-lhsj_autogen/
   D:/Qt/6.9.3/msvc2022_64/include/QtCore/qbytearrayalgorithms.h \
   D:/Qt/6.9.3/msvc2022_64/include/QtCore/qbytearraylist.h \
   D:/Qt/6.9.3/msvc2022_64/include/QtCore/qbytearrayview.h \
+  D:/Qt/6.9.3/msvc2022_64/include/QtCore/qcalendar.h \
   D:/Qt/6.9.3/msvc2022_64/include/QtCore/qchar.h \
   D:/Qt/6.9.3/msvc2022_64/include/QtCore/qcompare.h \
   D:/Qt/6.9.3/msvc2022_64/include/QtCore/qcompare_impl.h \
@@ -89,6 +94,7 @@ C:/code/dldl-lhsj/build/Desktop_Qt_6_9_3_MSVC2022_64bit-Debug/dldl-lhsj_autogen/
   D:/Qt/6.9.3/msvc2022_64/include/QtCore/qcontiguouscache.h \
   D:/Qt/6.9.3/msvc2022_64/include/QtCore/qdarwinhelpers.h \
   D:/Qt/6.9.3/msvc2022_64/include/QtCore/qdatastream.h \
+  D:/Qt/6.9.3/msvc2022_64/include/QtCore/qdatetime.h \
   D:/Qt/6.9.3/msvc2022_64/include/QtCore/qdebug.h \
   D:/Qt/6.9.3/msvc2022_64/include/QtCore/qendian.h \
   D:/Qt/6.9.3/msvc2022_64/include/QtCore/qexceptionhandling.h \
@@ -108,6 +114,7 @@ C:/code/dldl-lhsj/build/Desktop_Qt_6_9_3_MSVC2022_64bit-Debug/dldl-lhsj_autogen/
   D:/Qt/6.9.3/msvc2022_64/include/QtCore/qlatin1stringview.h \
   D:/Qt/6.9.3/msvc2022_64/include/QtCore/qline.h \
   D:/Qt/6.9.3/msvc2022_64/include/QtCore/qlist.h \
+  D:/Qt/6.9.3/msvc2022_64/include/QtCore/qlocale.h \
   D:/Qt/6.9.3/msvc2022_64/include/QtCore/qlogging.h \
   D:/Qt/6.9.3/msvc2022_64/include/QtCore/qmalloc.h \
   D:/Qt/6.9.3/msvc2022_64/include/QtCore/qmap.h \
@@ -180,6 +187,7 @@ C:/code/dldl-lhsj/build/Desktop_Qt_6_9_3_MSVC2022_64bit-Debug/dldl-lhsj_autogen/
   D:/Qt/6.9.3/msvc2022_64/include/QtCore/qversiontagging.h \
   D:/Qt/6.9.3/msvc2022_64/include/QtCore/qxptype_traits.h \
   D:/Qt/6.9.3/msvc2022_64/include/QtCore/qyieldcpu.h \
+  D:/Qt/6.9.3/msvc2022_64/include/QtGui/QImage \
   D:/Qt/6.9.3/msvc2022_64/include/QtGui/qaction.h \
   D:/Qt/6.9.3/msvc2022_64/include/QtGui/qbitmap.h \
   D:/Qt/6.9.3/msvc2022_64/include/QtGui/qbrush.h \

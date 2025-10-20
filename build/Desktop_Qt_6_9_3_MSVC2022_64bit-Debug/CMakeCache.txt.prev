@@ -160,7 +160,7 @@ CMAKE_MODULE_PATH:STRING=D:/Qt/6.9.3/msvc2022_64/lib/cmake/Qt6;D:/Qt/6.9.3/msvc2
 //Path to a program.
 CMAKE_MT:FILEPATH=C:/Program Files (x86)/Windows Kits/10/bin/10.0.26100.0/x64/mt.exe
 
-CMAKE_PREFIX_PATH:STRING=D:/Qt/6.9.3/msvc2022_64
+CMAKE_PREFIX_PATH:STRING=C:/code/dldl-lhsj/build/Desktop_Qt_6_9_3_MSVC2022_64bit-Debug/vcpkg_installed/x64-windows/debug;C:/code/dldl-lhsj/build/Desktop_Qt_6_9_3_MSVC2022_64bit-Debug/vcpkg_installed/x64-windows;D:/Qt/6.9.3/msvc2022_64
 
 //Value Computed by CMake
 CMAKE_PROJECT_DESCRIPTION:STATIC=
@@ -254,7 +254,8 @@ CMAKE_STATIC_LINKER_FLAGS_RELEASE:STRING=
 // during RELWITHDEBINFO builds.
 CMAKE_STATIC_LINKER_FLAGS_RELWITHDEBINFO:STRING=
 
-CMAKE_TOOLCHAIN_FILE:PATH=C:/code/dldl-lhsj/build/Desktop_Qt_6_9_3_MSVC2022_64bit-Debug/vcpkg-dependencies/toolchain.cmake
+//The CMake toolchain file
+CMAKE_TOOLCHAIN_FILE:FILEPATH=C:/code/dldl-lhsj/build/Desktop_Qt_6_9_3_MSVC2022_64bit-Debug/vcpkg-dependencies/toolchain.cmake
 
 //If this value is on, makefiles will be generated without the
 // .SILENT directive, and all commands will be echoed to the console
@@ -262,8 +263,29 @@ CMAKE_TOOLCHAIN_FILE:PATH=C:/code/dldl-lhsj/build/Desktop_Qt_6_9_3_MSVC2022_64bi
 // Studio IDE projects all commands are done without /nologo.
 CMAKE_VERBOSE_MAKEFILE:BOOL=FALSE
 
-//The directory containing a CMake configuration file for OpenCV.
-OpenCV_DIR:PATH=OpenCV_DIR-NOTFOUND
+//The directory containing a CMake configuration file for CURL.
+CURL_DIR:PATH=C:/code/dldl-lhsj/build/Desktop_Qt_6_9_3_MSVC2022_64bit-Debug/vcpkg_installed/x64-windows/share/curl
+
+//The directory containing a CMake configuration file for Leptonica.
+Leptonica_DIR:PATH=C:/code/dldl-lhsj/build/Desktop_Qt_6_9_3_MSVC2022_64bit-Debug/vcpkg_installed/x64-windows/share/leptonica
+
+//libarchive include directory
+LibArchive_INCLUDE_DIR:PATH=C:/code/dldl-lhsj/build/Desktop_Qt_6_9_3_MSVC2022_64bit-Debug/vcpkg_installed/x64-windows/include
+
+//libarchive library
+LibArchive_LIBRARY:FILEPATH=C:/code/dldl-lhsj/build/Desktop_Qt_6_9_3_MSVC2022_64bit-Debug/vcpkg_installed/x64-windows/debug/lib/archive.lib
+
+//Path to OpenCVConfig.cmake
+OpenCV_DIR:PATH=C:/code/dldl-lhsj/build/Desktop_Qt_6_9_3_MSVC2022_64bit-Debug/vcpkg_installed/x64-windows/share/opencv/../opencv4
+
+//The directory containing a CMake configuration file for OpenJPEG.
+OpenJPEG_DIR:PATH=C:/code/dldl-lhsj/build/Desktop_Qt_6_9_3_MSVC2022_64bit-Debug/vcpkg_installed/x64-windows/share/openjpeg
+
+//The directory containing a CMake configuration file for Protobuf.
+Protobuf_DIR:PATH=C:/code/dldl-lhsj/build/Desktop_Qt_6_9_3_MSVC2022_64bit-Debug/vcpkg_installed/x64-windows/share/protobuf
+
+//Path to a program.
+Protobuf_PROTOC_EXECUTABLE:FILEPATH=C:/code/dldl-lhsj/build/Desktop_Qt_6_9_3_MSVC2022_64bit-Debug/vcpkg_installed/x64-windows/tools/protobuf/protoc.exe
 
 //Additional directories where find(Qt6 ...) host Qt components
 // are searched
@@ -335,6 +357,71 @@ Qt6ZlibPrivate_DIR:PATH=D:/Qt/6.9.3/msvc2022_64/lib/cmake/Qt6ZlibPrivate
 //The directory containing a CMake configuration file for Qt6.
 Qt6_DIR:PATH=D:/Qt/6.9.3/msvc2022_64/lib/cmake/Qt6
 
+//Path to a file.
+TIFF_INCLUDE_DIR:PATH=C:/code/dldl-lhsj/build/Desktop_Qt_6_9_3_MSVC2022_64bit-Debug/vcpkg_installed/x64-windows/include
+
+//Path to a library.
+TIFF_LIBRARY_DEBUG:FILEPATH=C:/code/dldl-lhsj/build/Desktop_Qt_6_9_3_MSVC2022_64bit-Debug/vcpkg_installed/x64-windows/debug/lib/tiffd.lib
+
+//Path to a library.
+TIFF_LIBRARY_RELEASE:FILEPATH=C:/code/dldl-lhsj/build/Desktop_Qt_6_9_3_MSVC2022_64bit-Debug/vcpkg_installed/x64-windows/lib/tiff.lib
+
+//The directory containing a CMake configuration file for Tesseract.
+Tesseract_DIR:PATH=C:/code/dldl-lhsj/build/Desktop_Qt_6_9_3_MSVC2022_64bit-Debug/vcpkg_installed/x64-windows/share/tesseract
+
+//The directory containing a CMake configuration file for Tiff.
+Tiff_DIR:PATH=Tiff_DIR-NOTFOUND
+
+//Automatically copy dependencies into the output directory for
+// executables.
+VCPKG_APPLOCAL_DEPS:BOOL=ON
+
+//Additional options to bootstrap vcpkg
+VCPKG_BOOTSTRAP_OPTIONS:STRING=
+
+//The directory which contains the installed libraries for each
+// triplet
+VCPKG_INSTALLED_DIR:PATH=C:/code/dldl-lhsj/build/Desktop_Qt_6_9_3_MSVC2022_64bit-Debug/vcpkg_installed
+
+//Additional install options to pass to vcpkg
+VCPKG_INSTALL_OPTIONS:STRING=
+
+//The path to the vcpkg manifest directory.
+VCPKG_MANIFEST_DIR:PATH=C:/code/dldl-lhsj
+
+//Install the dependencies listed in your manifest:
+//\n    If this is off, you will have to manually install your dependencies.
+//\n    See https://github.com/microsoft/vcpkg/tree/master/docs/specifications/manifests.md
+// for more info.
+//\n
+VCPKG_MANIFEST_INSTALL:BOOL=ON
+
+//Use manifest mode, as opposed to classic mode.
+VCPKG_MANIFEST_MODE:BOOL=ON
+
+//Overlay ports to use for vcpkg install in manifest mode
+VCPKG_OVERLAY_PORTS:STRING=
+
+//Overlay triplets to use for vcpkg install in manifest mode
+VCPKG_OVERLAY_TRIPLETS:STRING=
+
+//Appends the vcpkg paths to CMAKE_PREFIX_PATH, CMAKE_LIBRARY_PATH
+// and CMAKE_FIND_ROOT_PATH so that vcpkg libraries/packages are
+// found after toolchain/system libraries/packages.
+VCPKG_PREFER_SYSTEM_LIBS:BOOL=OFF
+
+//Enable the setup of CMAKE_PROGRAM_PATH to vcpkg paths
+VCPKG_SETUP_CMAKE_PROGRAM_PATH:BOOL=ON
+
+//Vcpkg target triplet (ex. x86-windows)
+VCPKG_TARGET_TRIPLET:STRING=x64-windows
+
+//Trace calls to find_package()
+VCPKG_TRACE_FIND_PACKAGE:BOOL=OFF
+
+//Enables messages from the VCPKG toolchain for debugging purposes.
+VCPKG_VERBOSE:BOOL=OFF
+
 //Path to a program.
 Vulkan_GLSLANG_VALIDATOR_EXECUTABLE:FILEPATH=Vulkan_GLSLANG_VALIDATOR_EXECUTABLE-NOTFOUND
 
@@ -350,6 +437,72 @@ Vulkan_LIBRARY:FILEPATH=Vulkan_LIBRARY-NOTFOUND
 //Path to a program.
 WINDEPLOYQT_EXECUTABLE:FILEPATH=D:/Qt/6.9.3/msvc2022_64/bin/windeployqt.exe
 
+//The directory containing a CMake configuration file for WebP.
+WebP_DIR:PATH=C:/code/dldl-lhsj/build/Desktop_Qt_6_9_3_MSVC2022_64bit-Debug/vcpkg_installed/x64-windows/share/WebP
+
+//(experimental) Automatically copy dependencies into the install
+// target directory for executables. Requires CMake 3.14.
+X_VCPKG_APPLOCAL_DEPS_INSTALL:BOOL=OFF
+
+//(experimental) Add USES_TERMINAL to VCPKG_APPLOCAL_DEPS to force
+// serialization.
+X_VCPKG_APPLOCAL_DEPS_SERIALIZED:BOOL=OFF
+
+//Path to a file.
+ZLIB_INCLUDE_DIR:PATH=C:/code/dldl-lhsj/build/Desktop_Qt_6_9_3_MSVC2022_64bit-Debug/vcpkg_installed/x64-windows/include
+
+//Path to a library.
+ZLIB_LIBRARY_DEBUG:FILEPATH=C:/code/dldl-lhsj/build/Desktop_Qt_6_9_3_MSVC2022_64bit-Debug/vcpkg_installed/x64-windows/debug/lib/zlibd.lib
+
+//Path to a library.
+ZLIB_LIBRARY_RELEASE:FILEPATH=C:/code/dldl-lhsj/build/Desktop_Qt_6_9_3_MSVC2022_64bit-Debug/vcpkg_installed/x64-windows/lib/zlib.lib
+
+//Path to a program.
+Z_VCPKG_BUILTIN_POWERSHELL_PATH:FILEPATH=C:/Windows/System32/WindowsPowerShell/v1.0/powershell.exe
+
+//Path to a program.
+Z_VCPKG_CL:FILEPATH=C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64/cl.exe
+
+//Path to a program.
+Z_VCPKG_PWSH_PATH:FILEPATH=Z_VCPKG_PWSH_PATH-NOTFOUND
+
+//The directory which contains the installed libraries for each
+// triplet
+_VCPKG_INSTALLED_DIR:PATH=C:/code/dldl-lhsj/build/Desktop_Qt_6_9_3_MSVC2022_64bit-Debug/vcpkg_installed
+
+//Path to a library.
+_vcpkg_libwebp_LIBRARY_DEBUG:FILEPATH=C:/code/dldl-lhsj/build/Desktop_Qt_6_9_3_MSVC2022_64bit-Debug/vcpkg_installed/x64-windows/debug/lib/libwebp.lib
+
+//Path to a library.
+_vcpkg_libwebp_LIBRARY_RELEASE:FILEPATH=C:/code/dldl-lhsj/build/Desktop_Qt_6_9_3_MSVC2022_64bit-Debug/vcpkg_installed/x64-windows/lib/libwebp.lib
+
+//Path to a library.
+_vcpkg_libwebpdecoder_LIBRARY_DEBUG:FILEPATH=C:/code/dldl-lhsj/build/Desktop_Qt_6_9_3_MSVC2022_64bit-Debug/vcpkg_installed/x64-windows/debug/lib/libwebpdecoder.lib
+
+//Path to a library.
+_vcpkg_libwebpdecoder_LIBRARY_RELEASE:FILEPATH=C:/code/dldl-lhsj/build/Desktop_Qt_6_9_3_MSVC2022_64bit-Debug/vcpkg_installed/x64-windows/lib/libwebpdecoder.lib
+
+//Path to a library.
+_vcpkg_libwebpdemux_LIBRARY_DEBUG:FILEPATH=C:/code/dldl-lhsj/build/Desktop_Qt_6_9_3_MSVC2022_64bit-Debug/vcpkg_installed/x64-windows/debug/lib/libwebpdemux.lib
+
+//Path to a library.
+_vcpkg_libwebpdemux_LIBRARY_RELEASE:FILEPATH=C:/code/dldl-lhsj/build/Desktop_Qt_6_9_3_MSVC2022_64bit-Debug/vcpkg_installed/x64-windows/lib/libwebpdemux.lib
+
+//Path to a library.
+_vcpkg_libwebpmux_LIBRARY_DEBUG:FILEPATH=C:/code/dldl-lhsj/build/Desktop_Qt_6_9_3_MSVC2022_64bit-Debug/vcpkg_installed/x64-windows/debug/lib/libwebpmux.lib
+
+//Path to a library.
+_vcpkg_libwebpmux_LIBRARY_RELEASE:FILEPATH=C:/code/dldl-lhsj/build/Desktop_Qt_6_9_3_MSVC2022_64bit-Debug/vcpkg_installed/x64-windows/lib/libwebpmux.lib
+
+//Path to a library.
+_vcpkg_sharpyuv_LIBRARY_DEBUG:FILEPATH=C:/code/dldl-lhsj/build/Desktop_Qt_6_9_3_MSVC2022_64bit-Debug/vcpkg_installed/x64-windows/debug/lib/libsharpyuv.lib
+
+//Path to a library.
+_vcpkg_sharpyuv_LIBRARY_RELEASE:FILEPATH=C:/code/dldl-lhsj/build/Desktop_Qt_6_9_3_MSVC2022_64bit-Debug/vcpkg_installed/x64-windows/lib/libsharpyuv.lib
+
+//The directory containing a CMake configuration file for absl.
+absl_DIR:PATH=C:/code/dldl-lhsj/build/Desktop_Qt_6_9_3_MSVC2022_64bit-Debug/vcpkg_installed/x64-windows/share/absl
+
 //Value Computed by CMake
 dldl-lhsj_BINARY_DIR:STATIC=C:/code/dldl-lhsj/build/Desktop_Qt_6_9_3_MSVC2022_64bit-Debug
 
@@ -359,8 +512,20 @@ dldl-lhsj_IS_TOP_LEVEL:STATIC=ON
 //Value Computed by CMake
 dldl-lhsj_SOURCE_DIR:STATIC=C:/code/dldl-lhsj
 
+//CMake built-in FindProtobuf.cmake module compatible
+protobuf_MODULE_COMPATIBLE:BOOL=OFF
+
+//Enable for verbose output
+protobuf_VERBOSE:BOOL=OFF
+
+//The directory containing a CMake configuration file for quirc.
+quirc_DIR:PATH=C:/code/dldl-lhsj/build/Desktop_Qt_6_9_3_MSVC2022_64bit-Debug/vcpkg_installed/x64-windows/share/quirc
+
+//The directory containing a CMake configuration file for utf8_range.
+utf8_range_DIR:PATH=C:/code/dldl-lhsj/build/Desktop_Qt_6_9_3_MSVC2022_64bit-Debug/vcpkg_installed/x64-windows/share/utf8_range
+
 //Path to a program.
-vcpkg_program:FILEPATH=C:/Program Files/Microsoft Visual Studio/2022/Community/VC/vcpkg/vcpkg.exe
+vcpkg_program:FILEPATH=C:/vcpkg/vcpkg.exe
 
 
 ########################
@@ -521,12 +686,36 @@ CMAKE_STATIC_LINKER_FLAGS_MINSIZEREL-ADVANCED:INTERNAL=1
 CMAKE_STATIC_LINKER_FLAGS_RELEASE-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_STATIC_LINKER_FLAGS_RELWITHDEBINFO
 CMAKE_STATIC_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: CMAKE_TOOLCHAIN_FILE
+CMAKE_TOOLCHAIN_FILE-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_VERBOSE_MAKEFILE
 CMAKE_VERBOSE_MAKEFILE-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: CURL_LIBRARY_DEBUG
+CURL_LIBRARY_DEBUG-ADVANCED:INTERNAL=1
+//vcpkg
+CURL_LIBRARY_DEBUG:INTERNAL=C:/code/dldl-lhsj/build/Desktop_Qt_6_9_3_MSVC2022_64bit-Debug/vcpkg_installed/x64-windows/debug/lib/libcurl-d.lib
+//ADVANCED property for variable: CURL_LIBRARY_RELEASE
+CURL_LIBRARY_RELEASE-ADVANCED:INTERNAL=1
+//vcpkg
+CURL_LIBRARY_RELEASE:INTERNAL=C:/code/dldl-lhsj/build/Desktop_Qt_6_9_3_MSVC2022_64bit-Debug/vcpkg_installed/x64-windows/lib/libcurl.lib
+//Details about finding LibArchive
+FIND_PACKAGE_MESSAGE_DETAILS_LibArchive:INTERNAL=[C:/code/dldl-lhsj/build/Desktop_Qt_6_9_3_MSVC2022_64bit-Debug/vcpkg_installed/x64-windows/debug/lib/archive.lib][C:/code/dldl-lhsj/build/Desktop_Qt_6_9_3_MSVC2022_64bit-Debug/vcpkg_installed/x64-windows/include][v3.8.2()]
+//Details about finding OpenCV
+FIND_PACKAGE_MESSAGE_DETAILS_OpenCV:INTERNAL=[C:/code/dldl-lhsj/build/Desktop_Qt_6_9_3_MSVC2022_64bit-Debug/vcpkg_installed/x64-windows][v4.11.0()]
+//Details about finding Protobuf
+FIND_PACKAGE_MESSAGE_DETAILS_Protobuf:INTERNAL=[C:/code/dldl-lhsj/build/Desktop_Qt_6_9_3_MSVC2022_64bit-Debug/vcpkg_installed/x64-windows/tools/protobuf/protoc.exe][optimized;C:/code/dldl-lhsj/build/Desktop_Qt_6_9_3_MSVC2022_64bit-Debug/vcpkg_installed/x64-windows/bin/libprotobuf.dll;debug;C:/code/dldl-lhsj/build/Desktop_Qt_6_9_3_MSVC2022_64bit-Debug/vcpkg_installed/x64-windows/debug/bin/libprotobufd.dll][C:/code/dldl-lhsj/build/Desktop_Qt_6_9_3_MSVC2022_64bit-Debug/vcpkg_installed/x64-windows/include][v29.5.0()]
+//Details about finding TIFF
+FIND_PACKAGE_MESSAGE_DETAILS_TIFF:INTERNAL=[optimized;C:/code/dldl-lhsj/build/Desktop_Qt_6_9_3_MSVC2022_64bit-Debug/vcpkg_installed/x64-windows/lib/tiff.lib;debug;C:/code/dldl-lhsj/build/Desktop_Qt_6_9_3_MSVC2022_64bit-Debug/vcpkg_installed/x64-windows/debug/lib/tiffd.lib][C:/code/dldl-lhsj/build/Desktop_Qt_6_9_3_MSVC2022_64bit-Debug/vcpkg_installed/x64-windows/include][c ][v4.7.1()]
 //Details about finding Threads
 FIND_PACKAGE_MESSAGE_DETAILS_Threads:INTERNAL=[TRUE][v()]
+//Details about finding ZLIB
+FIND_PACKAGE_MESSAGE_DETAILS_ZLIB:INTERNAL=[optimized;C:/code/dldl-lhsj/build/Desktop_Qt_6_9_3_MSVC2022_64bit-Debug/vcpkg_installed/x64-windows/lib/zlib.lib;debug;C:/code/dldl-lhsj/build/Desktop_Qt_6_9_3_MSVC2022_64bit-Debug/vcpkg_installed/x64-windows/debug/lib/zlibd.lib][C:/code/dldl-lhsj/build/Desktop_Qt_6_9_3_MSVC2022_64bit-Debug/vcpkg_installed/x64-windows/include][c ][v1.3.1(1)]
 //Test HAVE_STDATOMIC
 HAVE_STDATOMIC:INTERNAL=1
+//ADVANCED property for variable: LibArchive_INCLUDE_DIR
+LibArchive_INCLUDE_DIR-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: LibArchive_LIBRARY
+LibArchive_LIBRARY-ADVANCED:INTERNAL=1
 //Qt feature: abstractbutton (from target Qt6::Widgets)
 QT_FEATURE_abstractbutton:INTERNAL=ON
 //Qt feature: abstractslider (from target Qt6::Widgets)
@@ -1321,6 +1510,14 @@ QT_FEATURE_xmlstreamwriter:INTERNAL=ON
 QT_FEATURE_xrender:INTERNAL=OFF
 //Qt feature: zstd (from target Qt6::Core)
 QT_FEATURE_zstd:INTERNAL=OFF
+//ADVANCED property for variable: TIFF_INCLUDE_DIR
+TIFF_INCLUDE_DIR-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: TIFF_LIBRARY_DEBUG
+TIFF_LIBRARY_DEBUG-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: TIFF_LIBRARY_RELEASE
+TIFF_LIBRARY_RELEASE-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: VCPKG_VERBOSE
+VCPKG_VERBOSE-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: Vulkan_GLSLANG_VALIDATOR_EXECUTABLE
 Vulkan_GLSLANG_VALIDATOR_EXECUTABLE-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: Vulkan_GLSLC_EXECUTABLE
@@ -1329,7 +1526,43 @@ Vulkan_GLSLC_EXECUTABLE-ADVANCED:INTERNAL=1
 Vulkan_INCLUDE_DIR-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: Vulkan_LIBRARY
 Vulkan_LIBRARY-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: ZLIB_INCLUDE_DIR
+ZLIB_INCLUDE_DIR-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: ZLIB_LIBRARY_DEBUG
+ZLIB_LIBRARY_DEBUG-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: ZLIB_LIBRARY_RELEASE
+ZLIB_LIBRARY_RELEASE-ADVANCED:INTERNAL=1
+//Making sure VCPKG_MANIFEST_MODE doesn't change
+Z_VCPKG_CHECK_MANIFEST_MODE:INTERNAL=ON
+//The path to the PowerShell implementation to use.
+Z_VCPKG_POWERSHELL_PATH:INTERNAL=C:/Windows/System32/WindowsPowerShell/v1.0/powershell.exe
+//Vcpkg root directory
+Z_VCPKG_ROOT_DIR:INTERNAL=C:/vcpkg
 //CMAKE_INSTALL_PREFIX during last run
 _GNUInstallDirs_LAST_CMAKE_INSTALL_PREFIX:INTERNAL=C:/Program Files (x86)/dldl-lhsj
 _Qt6_LINGUIST_TOOLS_DIR:INTERNAL=D:/Qt/6.9.3/msvc2022_64/lib/cmake/Qt6LinguistTools
+//ADVANCED property for variable: _vcpkg_libwebp_LIBRARY_DEBUG
+_vcpkg_libwebp_LIBRARY_DEBUG-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: _vcpkg_libwebp_LIBRARY_RELEASE
+_vcpkg_libwebp_LIBRARY_RELEASE-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: _vcpkg_libwebpdecoder_LIBRARY_DEBUG
+_vcpkg_libwebpdecoder_LIBRARY_DEBUG-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: _vcpkg_libwebpdecoder_LIBRARY_RELEASE
+_vcpkg_libwebpdecoder_LIBRARY_RELEASE-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: _vcpkg_libwebpdemux_LIBRARY_DEBUG
+_vcpkg_libwebpdemux_LIBRARY_DEBUG-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: _vcpkg_libwebpdemux_LIBRARY_RELEASE
+_vcpkg_libwebpdemux_LIBRARY_RELEASE-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: _vcpkg_libwebpmux_LIBRARY_DEBUG
+_vcpkg_libwebpmux_LIBRARY_DEBUG-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: _vcpkg_libwebpmux_LIBRARY_RELEASE
+_vcpkg_libwebpmux_LIBRARY_RELEASE-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: _vcpkg_sharpyuv_LIBRARY_DEBUG
+_vcpkg_sharpyuv_LIBRARY_DEBUG-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: _vcpkg_sharpyuv_LIBRARY_RELEASE
+_vcpkg_sharpyuv_LIBRARY_RELEASE-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: protobuf_MODULE_COMPATIBLE
+protobuf_MODULE_COMPATIBLE-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: protobuf_VERBOSE
+protobuf_VERBOSE-ADVANCED:INTERNAL=1
 

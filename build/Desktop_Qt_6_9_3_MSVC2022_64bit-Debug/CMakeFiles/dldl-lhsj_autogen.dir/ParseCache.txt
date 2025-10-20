@@ -58,6 +58,10 @@ C:/code/dldl-lhsj/mainwindow.h
  mdp:C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/include/yvals.h
  mdp:C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/include/yvals_core.h
  mdp:C:/code/dldl-lhsj/mainwindow.h
+ mdp:D:/Qt/6.9.3/msvc2022_64/include/QtCore/QDateTime
+ mdp:D:/Qt/6.9.3/msvc2022_64/include/QtCore/QDebug
+ mdp:D:/Qt/6.9.3/msvc2022_64/include/QtCore/QPoint
+ mdp:D:/Qt/6.9.3/msvc2022_64/include/QtCore/QRect
  mdp:D:/Qt/6.9.3/msvc2022_64/include/QtCore/q17memory.h
  mdp:D:/Qt/6.9.3/msvc2022_64/include/QtCore/q20functional.h
  mdp:D:/Qt/6.9.3/msvc2022_64/include/QtCore/q20iterator.h
@@ -79,6 +83,7 @@ C:/code/dldl-lhsj/mainwindow.h
  mdp:D:/Qt/6.9.3/msvc2022_64/include/QtCore/qbytearrayalgorithms.h
  mdp:D:/Qt/6.9.3/msvc2022_64/include/QtCore/qbytearraylist.h
  mdp:D:/Qt/6.9.3/msvc2022_64/include/QtCore/qbytearrayview.h
+ mdp:D:/Qt/6.9.3/msvc2022_64/include/QtCore/qcalendar.h
  mdp:D:/Qt/6.9.3/msvc2022_64/include/QtCore/qchar.h
  mdp:D:/Qt/6.9.3/msvc2022_64/include/QtCore/qcompare.h
  mdp:D:/Qt/6.9.3/msvc2022_64/include/QtCore/qcompare_impl.h
@@ -92,6 +97,7 @@ C:/code/dldl-lhsj/mainwindow.h
  mdp:D:/Qt/6.9.3/msvc2022_64/include/QtCore/qcontiguouscache.h
  mdp:D:/Qt/6.9.3/msvc2022_64/include/QtCore/qdarwinhelpers.h
  mdp:D:/Qt/6.9.3/msvc2022_64/include/QtCore/qdatastream.h
+ mdp:D:/Qt/6.9.3/msvc2022_64/include/QtCore/qdatetime.h
  mdp:D:/Qt/6.9.3/msvc2022_64/include/QtCore/qdebug.h
  mdp:D:/Qt/6.9.3/msvc2022_64/include/QtCore/qendian.h
  mdp:D:/Qt/6.9.3/msvc2022_64/include/QtCore/qexceptionhandling.h
@@ -111,6 +117,7 @@ C:/code/dldl-lhsj/mainwindow.h
  mdp:D:/Qt/6.9.3/msvc2022_64/include/QtCore/qlatin1stringview.h
  mdp:D:/Qt/6.9.3/msvc2022_64/include/QtCore/qline.h
  mdp:D:/Qt/6.9.3/msvc2022_64/include/QtCore/qlist.h
+ mdp:D:/Qt/6.9.3/msvc2022_64/include/QtCore/qlocale.h
  mdp:D:/Qt/6.9.3/msvc2022_64/include/QtCore/qlogging.h
  mdp:D:/Qt/6.9.3/msvc2022_64/include/QtCore/qmalloc.h
  mdp:D:/Qt/6.9.3/msvc2022_64/include/QtCore/qmap.h
@@ -183,6 +190,7 @@ C:/code/dldl-lhsj/mainwindow.h
  mdp:D:/Qt/6.9.3/msvc2022_64/include/QtCore/qversiontagging.h
  mdp:D:/Qt/6.9.3/msvc2022_64/include/QtCore/qxptype_traits.h
  mdp:D:/Qt/6.9.3/msvc2022_64/include/QtCore/qyieldcpu.h
+ mdp:D:/Qt/6.9.3/msvc2022_64/include/QtGui/QImage
  mdp:D:/Qt/6.9.3/msvc2022_64/include/QtGui/qaction.h
  mdp:D:/Qt/6.9.3/msvc2022_64/include/QtGui/qbitmap.h
  mdp:D:/Qt/6.9.3/msvc2022_64/include/QtGui/qbrush.h

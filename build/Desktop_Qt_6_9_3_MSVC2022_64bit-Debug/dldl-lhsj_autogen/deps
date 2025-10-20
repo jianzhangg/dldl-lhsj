@@ -61,9 +61,74 @@ dldl-lhsj_autogen/timestamp: \
 	C:/code/dldl-lhsj/build/Desktop_Qt_6_9_3_MSVC2022_64bit-Debug/CMakeFiles/3.30.5/CMakeCXXCompiler.cmake \
 	C:/code/dldl-lhsj/build/Desktop_Qt_6_9_3_MSVC2022_64bit-Debug/CMakeFiles/3.30.5/CMakeRCCompiler.cmake \
 	C:/code/dldl-lhsj/build/Desktop_Qt_6_9_3_MSVC2022_64bit-Debug/CMakeFiles/3.30.5/CMakeSystem.cmake \
+	C:/code/dldl-lhsj/build/Desktop_Qt_6_9_3_MSVC2022_64bit-Debug/vcpkg-dependencies/toolchain.cmake \
+	C:/code/dldl-lhsj/build/Desktop_Qt_6_9_3_MSVC2022_64bit-Debug/vcpkg_installed/x64-windows/share/WebP/WebPConfig.cmake \
+	C:/code/dldl-lhsj/build/Desktop_Qt_6_9_3_MSVC2022_64bit-Debug/vcpkg_installed/x64-windows/share/WebP/WebPConfigVersion.cmake \
+	C:/code/dldl-lhsj/build/Desktop_Qt_6_9_3_MSVC2022_64bit-Debug/vcpkg_installed/x64-windows/share/WebP/WebPTargets-debug.cmake \
+	C:/code/dldl-lhsj/build/Desktop_Qt_6_9_3_MSVC2022_64bit-Debug/vcpkg_installed/x64-windows/share/WebP/WebPTargets-release.cmake \
+	C:/code/dldl-lhsj/build/Desktop_Qt_6_9_3_MSVC2022_64bit-Debug/vcpkg_installed/x64-windows/share/WebP/WebPTargets.cmake \
+	C:/code/dldl-lhsj/build/Desktop_Qt_6_9_3_MSVC2022_64bit-Debug/vcpkg_installed/x64-windows/share/absl/abslConfig.cmake \
+	C:/code/dldl-lhsj/build/Desktop_Qt_6_9_3_MSVC2022_64bit-Debug/vcpkg_installed/x64-windows/share/absl/abslConfigVersion.cmake \
+	C:/code/dldl-lhsj/build/Desktop_Qt_6_9_3_MSVC2022_64bit-Debug/vcpkg_installed/x64-windows/share/absl/abslTargets-debug.cmake \
+	C:/code/dldl-lhsj/build/Desktop_Qt_6_9_3_MSVC2022_64bit-Debug/vcpkg_installed/x64-windows/share/absl/abslTargets-release.cmake \
+	C:/code/dldl-lhsj/build/Desktop_Qt_6_9_3_MSVC2022_64bit-Debug/vcpkg_installed/x64-windows/share/absl/abslTargets.cmake \
+	C:/code/dldl-lhsj/build/Desktop_Qt_6_9_3_MSVC2022_64bit-Debug/vcpkg_installed/x64-windows/share/curl/CURLConfig.cmake \
+	C:/code/dldl-lhsj/build/Desktop_Qt_6_9_3_MSVC2022_64bit-Debug/vcpkg_installed/x64-windows/share/curl/CURLConfigVersion.cmake \
+	C:/code/dldl-lhsj/build/Desktop_Qt_6_9_3_MSVC2022_64bit-Debug/vcpkg_installed/x64-windows/share/curl/CURLTargets-debug.cmake \
+	C:/code/dldl-lhsj/build/Desktop_Qt_6_9_3_MSVC2022_64bit-Debug/vcpkg_installed/x64-windows/share/curl/CURLTargets-release.cmake \
+	C:/code/dldl-lhsj/build/Desktop_Qt_6_9_3_MSVC2022_64bit-Debug/vcpkg_installed/x64-windows/share/curl/CURLTargets.cmake \
+	C:/code/dldl-lhsj/build/Desktop_Qt_6_9_3_MSVC2022_64bit-Debug/vcpkg_installed/x64-windows/share/curl/vcpkg-cmake-wrapper.cmake \
+	C:/code/dldl-lhsj/build/Desktop_Qt_6_9_3_MSVC2022_64bit-Debug/vcpkg_installed/x64-windows/share/leptonica/LeptonicaConfig-version.cmake \
+	C:/code/dldl-lhsj/build/Desktop_Qt_6_9_3_MSVC2022_64bit-Debug/vcpkg_installed/x64-windows/share/leptonica/LeptonicaConfig.cmake \
+	C:/code/dldl-lhsj/build/Desktop_Qt_6_9_3_MSVC2022_64bit-Debug/vcpkg_installed/x64-windows/share/leptonica/LeptonicaTargets-debug.cmake \
+	C:/code/dldl-lhsj/build/Desktop_Qt_6_9_3_MSVC2022_64bit-Debug/vcpkg_installed/x64-windows/share/leptonica/LeptonicaTargets-release.cmake \
+	C:/code/dldl-lhsj/build/Desktop_Qt_6_9_3_MSVC2022_64bit-Debug/vcpkg_installed/x64-windows/share/leptonica/LeptonicaTargets.cmake \
+	C:/code/dldl-lhsj/build/Desktop_Qt_6_9_3_MSVC2022_64bit-Debug/vcpkg_installed/x64-windows/share/libarchive/vcpkg-cmake-wrapper.cmake \
+	C:/code/dldl-lhsj/build/Desktop_Qt_6_9_3_MSVC2022_64bit-Debug/vcpkg_installed/x64-windows/share/opencv/vcpkg-cmake-wrapper.cmake \
+	C:/code/dldl-lhsj/build/Desktop_Qt_6_9_3_MSVC2022_64bit-Debug/vcpkg_installed/x64-windows/share/opencv4/OpenCVConfig-version.cmake \
+	C:/code/dldl-lhsj/build/Desktop_Qt_6_9_3_MSVC2022_64bit-Debug/vcpkg_installed/x64-windows/share/opencv4/OpenCVConfig.cmake \
+	C:/code/dldl-lhsj/build/Desktop_Qt_6_9_3_MSVC2022_64bit-Debug/vcpkg_installed/x64-windows/share/opencv4/OpenCVModules-debug.cmake \
+	C:/code/dldl-lhsj/build/Desktop_Qt_6_9_3_MSVC2022_64bit-Debug/vcpkg_installed/x64-windows/share/opencv4/OpenCVModules-release.cmake \
+	C:/code/dldl-lhsj/build/Desktop_Qt_6_9_3_MSVC2022_64bit-Debug/vcpkg_installed/x64-windows/share/opencv4/OpenCVModules.cmake \
+	C:/code/dldl-lhsj/build/Desktop_Qt_6_9_3_MSVC2022_64bit-Debug/vcpkg_installed/x64-windows/share/openjpeg/OpenJPEGConfig.cmake \
+	C:/code/dldl-lhsj/build/Desktop_Qt_6_9_3_MSVC2022_64bit-Debug/vcpkg_installed/x64-windows/share/openjpeg/OpenJPEGConfigVersion.cmake \
+	C:/code/dldl-lhsj/build/Desktop_Qt_6_9_3_MSVC2022_64bit-Debug/vcpkg_installed/x64-windows/share/openjpeg/OpenJPEGTargets-debug.cmake \
+	C:/code/dldl-lhsj/build/Desktop_Qt_6_9_3_MSVC2022_64bit-Debug/vcpkg_installed/x64-windows/share/openjpeg/OpenJPEGTargets-release.cmake \
+	C:/code/dldl-lhsj/build/Desktop_Qt_6_9_3_MSVC2022_64bit-Debug/vcpkg_installed/x64-windows/share/openjpeg/OpenJPEGTargets.cmake \
+	C:/code/dldl-lhsj/build/Desktop_Qt_6_9_3_MSVC2022_64bit-Debug/vcpkg_installed/x64-windows/share/protobuf/protobuf-config-version.cmake \
+	C:/code/dldl-lhsj/build/Desktop_Qt_6_9_3_MSVC2022_64bit-Debug/vcpkg_installed/x64-windows/share/protobuf/protobuf-config.cmake \
+	C:/code/dldl-lhsj/build/Desktop_Qt_6_9_3_MSVC2022_64bit-Debug/vcpkg_installed/x64-windows/share/protobuf/protobuf-generate.cmake \
+	C:/code/dldl-lhsj/build/Desktop_Qt_6_9_3_MSVC2022_64bit-Debug/vcpkg_installed/x64-windows/share/protobuf/protobuf-module.cmake \
+	C:/code/dldl-lhsj/build/Desktop_Qt_6_9_3_MSVC2022_64bit-Debug/vcpkg_installed/x64-windows/share/protobuf/protobuf-options.cmake \
+	C:/code/dldl-lhsj/build/Desktop_Qt_6_9_3_MSVC2022_64bit-Debug/vcpkg_installed/x64-windows/share/protobuf/protobuf-targets-debug.cmake \
+	C:/code/dldl-lhsj/build/Desktop_Qt_6_9_3_MSVC2022_64bit-Debug/vcpkg_installed/x64-windows/share/protobuf/protobuf-targets-release.cmake \
+	C:/code/dldl-lhsj/build/Desktop_Qt_6_9_3_MSVC2022_64bit-Debug/vcpkg_installed/x64-windows/share/protobuf/protobuf-targets.cmake \
+	C:/code/dldl-lhsj/build/Desktop_Qt_6_9_3_MSVC2022_64bit-Debug/vcpkg_installed/x64-windows/share/protobuf/vcpkg-cmake-wrapper.cmake \
+	C:/code/dldl-lhsj/build/Desktop_Qt_6_9_3_MSVC2022_64bit-Debug/vcpkg_installed/x64-windows/share/quirc/quirc-config-debug.cmake \
+	C:/code/dldl-lhsj/build/Desktop_Qt_6_9_3_MSVC2022_64bit-Debug/vcpkg_installed/x64-windows/share/quirc/quirc-config-release.cmake \
+	C:/code/dldl-lhsj/build/Desktop_Qt_6_9_3_MSVC2022_64bit-Debug/vcpkg_installed/x64-windows/share/quirc/quirc-config.cmake \
+	C:/code/dldl-lhsj/build/Desktop_Qt_6_9_3_MSVC2022_64bit-Debug/vcpkg_installed/x64-windows/share/tesseract/TesseractConfig.cmake \
+	C:/code/dldl-lhsj/build/Desktop_Qt_6_9_3_MSVC2022_64bit-Debug/vcpkg_installed/x64-windows/share/tesseract/TesseractConfigVersion.cmake \
+	C:/code/dldl-lhsj/build/Desktop_Qt_6_9_3_MSVC2022_64bit-Debug/vcpkg_installed/x64-windows/share/tesseract/TesseractTargets-debug.cmake \
+	C:/code/dldl-lhsj/build/Desktop_Qt_6_9_3_MSVC2022_64bit-Debug/vcpkg_installed/x64-windows/share/tesseract/TesseractTargets-release.cmake \
+	C:/code/dldl-lhsj/build/Desktop_Qt_6_9_3_MSVC2022_64bit-Debug/vcpkg_installed/x64-windows/share/tesseract/TesseractTargets.cmake \
+	C:/code/dldl-lhsj/build/Desktop_Qt_6_9_3_MSVC2022_64bit-Debug/vcpkg_installed/x64-windows/share/tiff/vcpkg-cmake-wrapper.cmake \
+	C:/code/dldl-lhsj/build/Desktop_Qt_6_9_3_MSVC2022_64bit-Debug/vcpkg_installed/x64-windows/share/utf8_range/utf8_range-config.cmake \
+	C:/code/dldl-lhsj/build/Desktop_Qt_6_9_3_MSVC2022_64bit-Debug/vcpkg_installed/x64-windows/share/utf8_range/utf8_range-targets-debug.cmake \
+	C:/code/dldl-lhsj/build/Desktop_Qt_6_9_3_MSVC2022_64bit-Debug/vcpkg_installed/x64-windows/share/utf8_range/utf8_range-targets-release.cmake \
+	C:/code/dldl-lhsj/build/Desktop_Qt_6_9_3_MSVC2022_64bit-Debug/vcpkg_installed/x64-windows/share/utf8_range/utf8_range-targets.cmake \
+	C:/code/dldl-lhsj/build/Desktop_Qt_6_9_3_MSVC2022_64bit-Debug/vcpkg_installed/x64-windows/share/zlib/vcpkg-cmake-wrapper.cmake \
 	C:/code/dldl-lhsj/main.cpp \
 	C:/code/dldl-lhsj/mainwindow.cpp \
 	C:/code/dldl-lhsj/mainwindow.h \
+	C:/code/dldl-lhsj/resources.qrc \
+	C:/code/dldl-lhsj/vcpkg-configuration.json \
+	C:/code/dldl-lhsj/vcpkg.json \
+	C:/vcpkg/scripts/buildsystems/vcpkg.cmake \
+	D:/Qt/6.9.3/msvc2022_64/include/QtCore/QDateTime \
+	D:/Qt/6.9.3/msvc2022_64/include/QtCore/QDebug \
+	D:/Qt/6.9.3/msvc2022_64/include/QtCore/QPoint \
+	D:/Qt/6.9.3/msvc2022_64/include/QtCore/QRect \
 	D:/Qt/6.9.3/msvc2022_64/include/QtCore/q17memory.h \
 	D:/Qt/6.9.3/msvc2022_64/include/QtCore/q20functional.h \
 	D:/Qt/6.9.3/msvc2022_64/include/QtCore/q20iterator.h \
@@ -85,6 +150,7 @@ dldl-lhsj_autogen/timestamp: \
 	D:/Qt/6.9.3/msvc2022_64/include/QtCore/qbytearrayalgorithms.h \
 	D:/Qt/6.9.3/msvc2022_64/include/QtCore/qbytearraylist.h \
 	D:/Qt/6.9.3/msvc2022_64/include/QtCore/qbytearrayview.h \
+	D:/Qt/6.9.3/msvc2022_64/include/QtCore/qcalendar.h \
 	D:/Qt/6.9.3/msvc2022_64/include/QtCore/qchar.h \
 	D:/Qt/6.9.3/msvc2022_64/include/QtCore/qcompare.h \
 	D:/Qt/6.9.3/msvc2022_64/include/QtCore/qcompare_impl.h \
@@ -98,6 +164,7 @@ dldl-lhsj_autogen/timestamp: \
 	D:/Qt/6.9.3/msvc2022_64/include/QtCore/qcontiguouscache.h \
 	D:/Qt/6.9.3/msvc2022_64/include/QtCore/qdarwinhelpers.h \
 	D:/Qt/6.9.3/msvc2022_64/include/QtCore/qdatastream.h \
+	D:/Qt/6.9.3/msvc2022_64/include/QtCore/qdatetime.h \
 	D:/Qt/6.9.3/msvc2022_64/include/QtCore/qdebug.h \
 	D:/Qt/6.9.3/msvc2022_64/include/QtCore/qendian.h \
 	D:/Qt/6.9.3/msvc2022_64/include/QtCore/qexceptionhandling.h \
@@ -117,6 +184,7 @@ dldl-lhsj_autogen/timestamp: \
 	D:/Qt/6.9.3/msvc2022_64/include/QtCore/qlatin1stringview.h \
 	D:/Qt/6.9.3/msvc2022_64/include/QtCore/qline.h \
 	D:/Qt/6.9.3/msvc2022_64/include/QtCore/qlist.h \
+	D:/Qt/6.9.3/msvc2022_64/include/QtCore/qlocale.h \
 	D:/Qt/6.9.3/msvc2022_64/include/QtCore/qlogging.h \
 	D:/Qt/6.9.3/msvc2022_64/include/QtCore/qmalloc.h \
 	D:/Qt/6.9.3/msvc2022_64/include/QtCore/qmap.h \
@@ -189,6 +257,7 @@ dldl-lhsj_autogen/timestamp: \
 	D:/Qt/6.9.3/msvc2022_64/include/QtCore/qversiontagging.h \
 	D:/Qt/6.9.3/msvc2022_64/include/QtCore/qxptype_traits.h \
 	D:/Qt/6.9.3/msvc2022_64/include/QtCore/qyieldcpu.h \
+	D:/Qt/6.9.3/msvc2022_64/include/QtGui/QImage \
 	D:/Qt/6.9.3/msvc2022_64/include/QtGui/qaction.h \
 	D:/Qt/6.9.3/msvc2022_64/include/QtGui/qbitmap.h \
 	D:/Qt/6.9.3/msvc2022_64/include/QtGui/qbrush.h \
@@ -423,99 +492,41 @@ dldl-lhsj_autogen/timestamp: \
 	D:/Qt/6.9.3/msvc2022_64/lib/cmake/Qt6ZlibPrivate/Qt6ZlibPrivateConfigVersionImpl.cmake \
 	D:/Qt/6.9.3/msvc2022_64/lib/cmake/Qt6ZlibPrivate/Qt6ZlibPrivateTargets.cmake \
 	D:/Qt/6.9.3/msvc2022_64/lib/cmake/Qt6ZlibPrivate/Qt6ZlibPrivateVersionlessAliasTargets.cmake \
-	D:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeCXXCompiler.cmake.in \
-	D:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeCXXCompilerABI.cpp \
 	D:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeCXXInformation.cmake \
 	D:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeCheckCompilerFlagCommonPatterns.cmake \
 	D:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeCommonLanguageInclude.cmake \
-	D:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeCompilerIdDetection.cmake \
-	D:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeDetermineCXXCompiler.cmake \
-	D:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeDetermineCompiler.cmake \
-	D:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeDetermineCompilerABI.cmake \
-	D:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeDetermineCompilerId.cmake \
-	D:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeDetermineCompilerSupport.cmake \
-	D:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeDetermineRCCompiler.cmake \
-	D:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeDetermineSystem.cmake \
-	D:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeFindBinUtils.cmake \
+	D:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeDependentOption.cmake \
 	D:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeFindDependencyMacro.cmake \
 	D:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeGenericSystem.cmake \
 	D:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeInitializeConfigs.cmake \
 	D:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeLanguageInformation.cmake \
-	D:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeNinjaFindMake.cmake \
 	D:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeParseArguments.cmake \
-	D:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeParseImplicitIncludeInfo.cmake \
-	D:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeParseImplicitLinkInfo.cmake \
-	D:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeParseLibraryArchitecture.cmake \
-	D:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeRCCompiler.cmake.in \
 	D:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeRCInformation.cmake \
-	D:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeSystem.cmake.in \
 	D:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeSystemSpecificInformation.cmake \
 	D:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeSystemSpecificInitialize.cmake \
-	D:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeTestCXXCompiler.cmake \
-	D:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeTestCompilerCommon.cmake \
-	D:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeTestRCCompiler.cmake \
 	D:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CheckCXXCompilerFlag.cmake \
 	D:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CheckCXXSourceCompiles.cmake \
 	D:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CheckIncludeFileCXX.cmake \
 	D:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CheckLibraryExists.cmake \
-	D:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/Compiler/ADSP-DetermineCompiler.cmake \
-	D:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/Compiler/ARMCC-DetermineCompiler.cmake \
-	D:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/Compiler/ARMClang-DetermineCompiler.cmake \
-	D:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/Compiler/AppleClang-DetermineCompiler.cmake \
-	D:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/Compiler/Borland-DetermineCompiler.cmake \
 	D:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/Compiler/CMakeCommonCompilerMacros.cmake \
-	D:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/Compiler/Clang-DetermineCompiler.cmake \
-	D:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/Compiler/Clang-DetermineCompilerInternal.cmake \
-	D:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/Compiler/Compaq-CXX-DetermineCompiler.cmake \
-	D:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/Compiler/Cray-DetermineCompiler.cmake \
-	D:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/Compiler/CrayClang-DetermineCompiler.cmake \
-	D:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/Compiler/Embarcadero-DetermineCompiler.cmake \
-	D:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/Compiler/Fujitsu-DetermineCompiler.cmake \
-	D:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/Compiler/FujitsuClang-DetermineCompiler.cmake \
-	D:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/Compiler/GHS-DetermineCompiler.cmake \
-	D:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/Compiler/GNU-CXX-DetermineCompiler.cmake \
-	D:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/Compiler/HP-CXX-DetermineCompiler.cmake \
-	D:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/Compiler/IAR-DetermineCompiler.cmake \
-	D:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/Compiler/IBMCPP-CXX-DetermineVersionInternal.cmake \
-	D:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/Compiler/IBMClang-CXX-DetermineCompiler.cmake \
-	D:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/Compiler/Intel-DetermineCompiler.cmake \
-	D:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/Compiler/IntelLLVM-DetermineCompiler.cmake \
-	D:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/Compiler/LCC-CXX-DetermineCompiler.cmake \
-	D:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/Compiler/MSVC-CXX-CXXImportStd.cmake \
 	D:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/Compiler/MSVC-CXX.cmake \
-	D:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/Compiler/MSVC-DetermineCompiler.cmake \
 	D:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/Compiler/MSVC.cmake \
-	D:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/Compiler/NVHPC-DetermineCompiler.cmake \
-	D:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/Compiler/NVIDIA-DetermineCompiler.cmake \
-	D:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/Compiler/OpenWatcom-DetermineCompiler.cmake \
-	D:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/Compiler/OrangeC-DetermineCompiler.cmake \
-	D:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/Compiler/PGI-DetermineCompiler.cmake \
-	D:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/Compiler/PathScale-DetermineCompiler.cmake \
-	D:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/Compiler/SCO-DetermineCompiler.cmake \
-	D:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/Compiler/SunPro-CXX-DetermineCompiler.cmake \
-	D:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/Compiler/TI-DetermineCompiler.cmake \
-	D:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/Compiler/TIClang-DetermineCompiler.cmake \
-	D:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/Compiler/Tasking-DetermineCompiler.cmake \
-	D:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/Compiler/VisualAge-CXX-DetermineCompiler.cmake \
-	D:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/Compiler/Watcom-DetermineCompiler.cmake \
-	D:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/Compiler/XL-CXX-DetermineCompiler.cmake \
-	D:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/Compiler/XLClang-CXX-DetermineCompiler.cmake \
-	D:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/Compiler/zOS-CXX-DetermineCompiler.cmake \
+	D:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/FindLibArchive.cmake \
 	D:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/FindPackageHandleStandardArgs.cmake \
 	D:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/FindPackageMessage.cmake \
+	D:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/FindTIFF.cmake \
 	D:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/FindThreads.cmake \
 	D:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/FindVulkan.cmake \
+	D:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/FindZLIB.cmake \
 	D:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/GNUInstallDirs.cmake \
-	D:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/Internal/CMakeDetermineLinkerId.cmake \
 	D:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/Internal/CheckCompilerFlag.cmake \
 	D:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/Internal/CheckFlagCommonConfig.cmake \
 	D:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/Internal/CheckSourceCompiles.cmake \
-	D:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/Internal/FeatureTesting.cmake \
-	D:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/Platform/Windows-Determine-CXX.cmake \
 	D:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/Platform/Windows-Initialize.cmake \
 	D:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/Platform/Windows-MSVC-CXX.cmake \
 	D:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/Platform/Windows-MSVC.cmake \
 	D:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/Platform/Windows.cmake \
 	D:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/Platform/WindowsPaths.cmake \
+	D:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/SelectLibraryConfigurations.cmake \
 	C:/code/dldl-lhsj/mainwindow.ui \
 	D:/Qt/Tools/CMake_64/bin/cmake.exe

@@ -24,6 +24,7 @@ set(PROJECT_SOURCES
         mainwindow.cpp
         mainwindow.h
         mainwindow.ui
+        resources.qrc
         ${TS_FILES}
 )
 
@@ -54,12 +55,18 @@ else()
     qt5_create_translation(QM_FILES ${CMAKE_SOURCE_DIR} ${TS_FILES})
 endif()
 
+target_include_directories(dldl-lhsj PRIVATE ${OpenCV_INCLUDE_DIRS})
 target_link_libraries(dldl-lhsj PRIVATE
     Qt${QT_VERSION_MAJOR}::Widgets
-    OpenCV::opencv
+    ${OpenCV_LIBS}
     Tesseract::libtesseract
-    Leptonica::leptonica
+    leptonica
 )
+
+# Windows specific system libraries
+if(WIN32)
+    target_link_libraries(dldl-lhsj PRIVATE Dwmapi User32 Gdi32)
+endif()
 
 # Qt for iOS sets MACOSX_BUNDLE_GUI_IDENTIFIER automatically since Qt 6.1.
 # If you are developing for iOS or macOS you should consider setting an
